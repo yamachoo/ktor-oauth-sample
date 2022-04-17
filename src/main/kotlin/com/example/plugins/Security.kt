@@ -40,9 +40,7 @@ fun Application.configureSecurity() {
 
     routing {
         authenticate("auth-oauth-google") {
-            get("login") {
-                call.respondRedirect("/callback")
-            }
+            get("/login") {}
 
             get("/callback") {
                 val principal: OAuthAccessTokenResponse.OAuth2? = call.authentication.principal()
