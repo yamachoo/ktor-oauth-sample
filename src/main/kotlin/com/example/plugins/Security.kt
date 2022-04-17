@@ -4,9 +4,7 @@ import io.ktor.server.sessions.*
 import io.ktor.server.auth.*
 import io.ktor.client.*
 import io.ktor.client.engine.apache.*
-import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.http.*
-import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
@@ -30,11 +28,7 @@ fun Application.configureSecurity() {
                     defaultScopes = listOf("https://www.googleapis.com/auth/userinfo.profile")
                 )
             }
-            client = HttpClient(Apache) {
-                install(ContentNegotiation) {
-                    json()
-                }
-            }
+            client = HttpClient(Apache)
         }
     }
 
